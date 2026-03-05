@@ -1,0 +1,18 @@
+# Build
+build/
+DerivedData/
+*.xcuserdata
+xcuserdata/
+
+# Xcode
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.xccheckout
+*.moved-aside
+
+# macOS
+.DS_Store
+*.swp
+*~
