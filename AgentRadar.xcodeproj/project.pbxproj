@@ -12,6 +12,7 @@
 		A002 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B002 /* AppDelegate.swift */; };
 		A003 /* AgentMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B003 /* AgentMonitor.swift */; };
 		A004 /* PopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B004 /* PopoverView.swift */; };
+		AABB001122334456 /* UpdateChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABB001122334455 /* UpdateChecker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		B003 /* AgentMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentMonitor.swift; sourceTree = "<group>"; };
 		B004 /* PopoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverView.swift; sourceTree = "<group>"; };
 		B005 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AABB001122334455 /* UpdateChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateChecker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +50,7 @@
 				B006 /* Assets.xcassets */,
 				B001 /* AgentRadarApp.swift */,
 				B002 /* AppDelegate.swift */,
+				AABB001122334455 /* UpdateChecker.swift */,
 				B003 /* AgentMonitor.swift */,
 				B004 /* PopoverView.swift */,
 				B005 /* Info.plist */,
@@ -127,6 +130,7 @@
 			files = (
 				A001 /* AgentRadarApp.swift in Sources */,
 				A002 /* AppDelegate.swift in Sources */,
+				AABB001122334456 /* UpdateChecker.swift in Sources */,
 				A003 /* AgentMonitor.swift in Sources */,
 				A004 /* PopoverView.swift in Sources */,
 			);

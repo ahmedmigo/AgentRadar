@@ -307,6 +307,19 @@ struct FooterBar: View {
             Spacer()
 
             Button(action: {
+                UpdateChecker.shared.checkForUpdate()
+            }) {
+                Image(systemName: "arrow.triangle.2.circlepath")
+                    .font(.system(size: 11, weight: .medium))
+            }
+            .buttonStyle(.plain)
+            .foregroundColor(.secondary)
+            .onHover { isHovered in
+                if isHovered { NSCursor.pointingHand.push() } else { NSCursor.pop() }
+            }
+            .help("Check for updates")
+
+            Button(action: {
                 NSApplication.shared.terminate(nil)
             }) {
                 HStack(spacing: 4) {

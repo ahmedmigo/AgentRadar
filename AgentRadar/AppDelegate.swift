@@ -38,6 +38,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         let contentView = PopoverView(monitor: monitor!)
         popover?.contentViewController = NSHostingController(rootView: contentView)
+
+        // Check for updates
+        UpdateChecker.shared.checkOnLaunch()
     }
 
     func handleAgentUpdate(_ agents: [DetectedAgent]) {
