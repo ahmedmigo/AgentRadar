@@ -82,23 +82,53 @@ context.move(to: CGPoint(x: center.x + 20, y: center.y - 40))
 context.addLine(to: CGPoint(x: center.x + 80, y: center.y - 40))
 context.strokePath()
 
-// Draw dots (agents)
-let dotColors = [NSColor.systemOrange, NSColor.systemGreen, NSColor.systemBlue]
-let dotPositions = [
+// Function to draw an AI sparkle (four-pointed star)
+func drawSparkle(at center: CGPoint, radius: CGFloat, color: NSColor, context: CGContext) {
+    context.setFillColor(color.cgColor)
+    
+    let path = CGMutablePath()
+    path.move(to: CGPoint(x: center.x, y: center.y + radius))
+    
+    // Top to Right curve
+    path.addQuadCurve(to: CGPoint(x: center.x + radius, y: center.y),
+                      control: CGPoint(x: center.x + radius * 0.2, y: center.y + radius * 0.2))
+    
+    // Right to Bottom curve
+    path.addQuadCurve(to: CGPoint(x: center.x, y: center.y - radius),
+                      control: CGPoint(x: center.x + radius * 0.2, y: center.y - radius * 0.2))
+    
+    // Bottom to Left curve
+    path.addQuadCurve(to: CGPoint(x: center.x - radius, y: center.y),
+                      control: CGPoint(x: center.x - radius * 0.2, y: center.y - radius * 0.2))
+    
+    // Left to Top curve
+    path.addQuadCurve(to: CGPoint(x: center.x, y: center.y + radius),
+                      control: CGPoint(x: center.x - radius * 0.2, y: center.y + radius * 0.2))
+    
+    context.addPath(path)
+    context.fillPath()
+    
+    // Draw a subtle center glow
+    context.setFillColor(NSColor.white.withAlphaComponent(0.8).cgColor)
+    context.fillEllipse(in: CGRect(x: center.x - radius * 0.15, y: center.y - radius * 0.15, width: radius * 0.3, height: radius * 0.3))
+}
+
+// Draw Sparkles (agents)
+let sparkleColors = [NSColor.systemOrange, NSColor.systemGreen, NSColor.systemBlue, NSColor.systemPink]
+let sparklePositions = [
     CGPoint(x: center.x + 180, y: center.y + 250),
     CGPoint(x: center.x - 220, y: center.y + 120),
-    CGPoint(x: center.x - 120, y: center.y - 280)
+    CGPoint(x: center.x - 120, y: center.y - 280),
+    CGPoint(x: center.x + 280, y: center.y - 150)
 ]
 
-for (i, pos) in dotPositions.enumerated() {
-    context.setFillColor(dotColors[i].cgColor)
-    let dotRect = CGRect(x: pos.x - 20, y: pos.y - 20, width: 40, height: 40)
-    context.fillEllipse(in: dotRect)
+for (i, pos) in sparklePositions.enumerated() {
+    drawSparkle(at: pos, radius: 45, color: sparkleColors[i], context: context)
     
-    // Add glow
-    context.setStrokeColor(dotColors[i].withAlphaComponent(0.4).cgColor)
-    context.setLineWidth(12)
-    context.strokeEllipse(in: dotRect.insetBy(dx: -10, dy: -10))
+    // Add outer glow ring
+    context.setStrokeColor(sparkleColors[i].withAlphaComponent(0.4).cgColor)
+    context.setLineWidth(4)
+    context.strokeEllipse(in: CGRect(x: pos.x - 30, y: pos.y - 30, width: 60, height: 60))
 }
 
 image.unlockFocus()
